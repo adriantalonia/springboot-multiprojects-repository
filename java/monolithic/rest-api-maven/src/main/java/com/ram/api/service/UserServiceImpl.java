@@ -1,6 +1,7 @@
 package com.ram.api.service;
 
 import com.ram.api.exception.ResourceNotFoundException;
+import com.ram.api.mapper.UserMapper;
 import com.ram.api.model.dto.request.UserRequest;
 import com.ram.api.model.dto.response.UserResponse;
 import com.ram.api.repository.UserRepository;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
             log.info("User {} not found", id);
             return new ResourceNotFoundException("User " + id + " not found");
         });
-        return null;
+        return UserMapper.MAPPER.toResponse(userDB);
     }
 
     @Override
@@ -33,7 +34,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse create(UserRequest user) {
-        return null;
+        var userEntity = UserMapper.MAPPER.toEntity(user);
+        var userDB = userRepository.save(userEntity);
+        return UserMapper.MAPPER.toResponse(userDB);
     }
 
     @Override

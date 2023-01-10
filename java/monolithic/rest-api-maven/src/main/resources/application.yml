@@ -8,7 +8,7 @@ spring:
     password: ${POSTGRES_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    generate-ddl: false
+    generate-ddl: true
     show-sql: true
 
 logging:
