@@ -40,7 +40,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse update(UserRequest user) {
-        return null;
+    public UserResponse update(UserRequest user, String id) {
+        var currentUserDB = userRepository.findById(UUID.fromString(id)).orElseThrow(() -> {
+            log.info("User {} not found", id);
+            return new ResourceNotFoundException("User " + id + " not found");
+        });
+
+        currentUserDB.setFirstName(user.getFirstName());
+        currentUserDB.setLastName(user.getLastName());
+        currentUserDB.setEmail(user.getEmail());
+        currentUserDB.setPhone(user.getPhone());
+        currentUserDB.setPassword(user.getPassword());
+        userRepository.save(currentUserDB);
+
+        return  UserMapper.MAPPER.toResponse(currentUserDB);
     }
 }

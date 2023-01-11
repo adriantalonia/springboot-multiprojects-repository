@@ -10,5 +10,5 @@ public interface UserService {
     UserResponse getUserById(UUID id);
     UserResponse getUserByEmail(String email);
     UserResponse create(UserRequest user);
-    UserResponse update(UserRequest user);
+    UserResponse update(UserRequest user, String id);
 }

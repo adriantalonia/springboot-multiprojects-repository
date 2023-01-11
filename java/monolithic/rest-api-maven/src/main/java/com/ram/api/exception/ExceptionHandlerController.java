@@ -22,4 +22,10 @@ public class ExceptionHandlerController {
                 .toList();
         return new ErrorResponse(new Date(), HttpStatus.BAD_REQUEST.value(), errors.toString());
     }
+
+    @ExceptionHandler(value = ResourceNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ErrorResponse resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+        return new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.value(), ex.getMessage());
+    }
 }
