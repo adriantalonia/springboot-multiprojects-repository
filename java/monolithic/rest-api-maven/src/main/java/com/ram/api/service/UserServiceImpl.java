@@ -5,6 +5,7 @@ import com.ram.api.mapper.UserMapper;
 import com.ram.api.model.dto.request.UserRequest;
 import com.ram.api.model.dto.response.UserResponse;
 import com.ram.api.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 @Slf4j
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
@@ -54,5 +56,10 @@ public class UserServiceImpl implements UserService {
         userRepository.save(currentUserDB);
 
         return  UserMapper.MAPPER.toResponse(currentUserDB);
+    }
+
+    @Override
+    public void deleteUser(UUID id) {
+
     }
 }

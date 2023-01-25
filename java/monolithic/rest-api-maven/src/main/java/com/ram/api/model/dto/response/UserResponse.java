@@ -1,5 +1,6 @@
 package com.ram.api.model.dto.response;
 
+import com.ram.api.model.entity.Role;
 import lombok.Data;
 
 import java.util.UUID;
@@ -13,4 +14,5 @@ public class UserResponse {
     private String email;
     private String phone;
     private Boolean active;
+    private Role role;
 }

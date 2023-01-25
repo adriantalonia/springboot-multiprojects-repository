@@ -1,10 +1,12 @@
 package com.ram.api.model.dto.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import com.ram.api.model.entity.Role;
+import jakarta.validation.constraints.*;
 import lombok.Data;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 public class UserRequest {
@@ -23,4 +25,6 @@ public class UserRequest {
     @NotBlank(message = "Password cannot be blank")
     @Size(min = 4, message = "Password must not be less than 8 characters")
     private String password;
+    @NotNull(message = "The user must have a role assigned")
+    private Set<Role> roles = new HashSet<>();
 }

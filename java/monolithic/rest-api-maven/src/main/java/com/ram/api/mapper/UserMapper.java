@@ -6,7 +6,7 @@ import com.ram.api.model.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(uses = {RoleMapper.class})
 public interface UserMapper {
 
     UserMapper MAPPER = Mappers.getMapper( UserMapper.class );
