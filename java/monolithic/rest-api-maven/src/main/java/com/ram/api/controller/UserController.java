@@ -29,4 +29,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.update(user, id));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getbyId(@PathVariable String id) {
+        System.out.println("id: "+id);
+        return ResponseEntity.ok(id);
+    }
 }
