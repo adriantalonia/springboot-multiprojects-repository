@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getbyId(@PathVariable String id) {
+    public ResponseEntity<?> getById(@PathVariable String id) {
         System.out.println("id: "+id);
         return ResponseEntity.ok(id);
     }
